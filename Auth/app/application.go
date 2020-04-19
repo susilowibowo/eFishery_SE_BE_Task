@@ -20,8 +20,10 @@ func StartApplication() {
 	inDB := &controllers.InDB{DB: db}
 
 	router.POST("/login", inDB.LoginUser)
+	router.POST("/tokeninfo", inDB.InfoToken)
 	router.POST("/user", inDB.CreateUser)
 	log.Print("Starting the application\n")
+
 	log.Print("Enter Port:\n")
 	fmt.Scanln(&port)
 	po := (":")

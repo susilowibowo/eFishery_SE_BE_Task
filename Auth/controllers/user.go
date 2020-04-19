@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"time"
@@ -110,4 +111,50 @@ func (idb *InDB) LoginUser(c *gin.Context) {
 		}
 	}
 	c.JSON(http.StatusOK, result)
+}
+
+// function get JWT and show all the claims
+
+func (idb *InDB) InfoToken(c *gin.Context) {
+	var (
+		// user   structs.User
+		result gin.H
+	)
+
+	tokenString := c.PostForm("token")
+
+	the_claim, err := extractClaims(tokenString)
+
+	if err {
+		result = gin.H{
+			"result": the_claim,
+		}
+	} else {
+		result = gin.H{
+			"result": "token not valid",
+		}
+	}
+
+	c.JSON(http.StatusOK, result)
+}
+
+// function extract claim token
+func extractClaims(tokenStr string) (jwt.MapClaims, bool) {
+	hmacSecretString := "secret"
+	hmacSecret := []byte(hmacSecretString)
+	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
+		// check token signing method etc
+		return hmacSecret, nil
+	})
+
+	if err != nil {
+		return nil, false
+	}
+
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		return claims, true
+	} else {
+		log.Printf("Invalid JWT Token")
+		return nil, false
+	}
 }
