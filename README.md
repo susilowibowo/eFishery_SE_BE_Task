@@ -40,8 +40,4 @@ Fetching Endpoint
 - "/login"       [POST] : login untuk mendapatkan token, menggunakan phone dan password
 - "/showuser"    [GET]  : menampilkan info user yang ada di db
 - "/showstorage" [GET]  : menampilkan seluruh hasil fetching + kurs harga dalam USD
-<<<<<<< HEAD
 - "/adminpage"   [POST]  : menampilkan data hasil fetching berdasarkan area_provinsi & weekly
-=======
-- "/adminpage"   [GET]  : menampilkan data hasil fetching berdasarkan area_provinsi & weekly
->>>>>>> a3fc87768b5662812f6cd92423d2c6d623079605
