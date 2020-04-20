@@ -61,6 +61,7 @@ func ConvertIDRtoUSD(theIDR int) float32 {
 }
 
 // function show storage resources berdasarkan area_provinsi dan tanggal weekly
+// not done
 func StorageAdmin(c *gin.Context) {
 	type Storages []structs.Storage
 	var (

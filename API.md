@@ -131,7 +131,7 @@ Show fetching resources + add USD field
 
 * **Success Response:**
 
-    **result:** `{"data":[{"Uuid":"","Komoditas":"","Area_provinsi":"","Area_kota":"","Size":"","Price":"","Tgl_parsed":"0001-01-01T00:00:00Z","Timestamp":"","Usd":0},{"Uuid":"8a23fcab-ef67-48b8-8ba1-7055ea91ea3b","Komoditas":"Penaeus Vannamei","Area_provinsi":"BANTEN","Area_kota":"PANDEGLANG","Size":"40","Price":"72000","Tgl_parsed":"2019-11-11T17:00:00Z","Timestamp":"1573491600","Usd":4,667}]}`
+    **data:** `{"data":[{"Uuid":"","Komoditas":"","Area_provinsi":"","Area_kota":"","Size":"","Price":"","Tgl_parsed":"0001-01-01T00:00:00Z","Timestamp":"","Usd":0},{"Uuid":"8a23fcab-ef67-48b8-8ba1-7055ea91ea3b","Komoditas":"Penaeus Vannamei","Area_provinsi":"BANTEN","Area_kota":"PANDEGLANG","Size":"40","Price":"72000","Tgl_parsed":"2019-11-11T17:00:00Z","Timestamp":"1573491600","Usd":4,667}]}`
  
 * **Error Response:**
 
@@ -140,4 +140,42 @@ Show fetching resources + add USD field
 * **Sample Call:**
 
 -
+
+**Admin Login**
+----
+role admin access only endpoint for filter result by area_provisi
+
+* **URL**
+
+  /adminpage
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+
+
+* **Data Params**
+
+  **middleware**
+  `Authorization=[string]` 
+  
+   
+
+* **Success Response:**
+
+    **Claims:**`{"Claims":{"Name":"name 3","Password":"MpLm","Phone":"33333","Role":"admin","Time":"2020-04-20T10:55:12.504988+07:00"}}`<br>
+
+    **data:** `{"data":[{"Uuid":"","Komoditas":"","Area_provinsi":"","Area_kota":"","Size":"","Price":"","Tgl_parsed":"0001-01-01T00:00:00Z","Timestamp":"","Usd":0},{"Uuid":"8a23fcab-ef67-48b8-8ba1-7055ea91ea3b","Komoditas":"Penaeus Vannamei","Area_provinsi":"BANTEN","Area_kota":"PANDEGLANG","Size":"40","Price":"72000","Tgl_parsed":"2019-11-11T17:00:00Z","Timestamp":"1573491600","Usd":4,667}]}`
+ 
+* **Error Response:**
+
+ **message:** `"message": "not authorized",` <br>
+
+* **Sample Call:**
+
+-
+
 
