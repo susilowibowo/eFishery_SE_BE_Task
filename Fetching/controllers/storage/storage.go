@@ -61,16 +61,16 @@ func ConvertIDRtoUSD(theIDR int) float32 {
 }
 
 // function show storage resources berdasarkan area_provinsi dan tanggal weekly
-// not done
+// not done minus weekly
 func StorageAdmin(c *gin.Context) {
 	type Storages []structs.Storage
 	var (
 		result   gin.H
 		storages Storages
-		// store    Storages
+		store    Storages
 	)
 
-	// ap := c.Param("area_provinsi")
+	ap := c.PostForm("area_provinsi")
 	response, err := http.Get("https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list")
 	if err != nil {
 		result = gin.H{
@@ -81,15 +81,15 @@ func StorageAdmin(c *gin.Context) {
 
 		json.Unmarshal(data, &storages)
 
-		// for i, _ := range storages {
+		for _, storage := range storages {
 
-		// 	if storages[i].Area_provinsi == ap {
-		// 		store = storages[i]
-		// 	}
-		// }
+			if storage.Area_provinsi == ap {
+				store = append(store, storage)
+			}
+		}
 
 		result = gin.H{
-			"data": storages,
+			"data": store,
 		}
 	}
 

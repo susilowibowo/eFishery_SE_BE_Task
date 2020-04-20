@@ -24,7 +24,7 @@ func StartApplication() {
 	router.POST("/login", inDB.LoginUser)
 	router.GET("/showuser", auth.Auth, inDB.ShowUser)
 	router.GET("/showstorage", auth.Auth, storage.ShowStorage)
-	router.GET("/adminpage", auth.IsAdmin, storage.StorageAdmin)
+	router.POST("/adminpage", auth.IsAdmin, storage.StorageAdmin)
 
 	log.Print("Starting the application\n")
 

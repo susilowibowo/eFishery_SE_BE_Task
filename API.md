@@ -151,13 +151,15 @@ role admin access only endpoint for filter result by area_provisi
 
 * **Method:**
 
-  `GET`
+  `POST`
   
 *  **URL Params**
 
 
 
 * **Data Params**
+
+     `area_provinsi=[string]`
 
   **middleware**
   `Authorization=[string]` 
