@@ -8,8 +8,8 @@ Petunjuk penggunaan :
 -(opsional) import file godb.sql ke database godb
 
 - clone project, lalu jalankan applikasinya :
-   > untuk Auth "go run Auth/main.go"
-   > untuk Fetching "go run Fetching/main.go"
+   - untuk Auth "go run Auth/main.go"
+   - untuk Fetching "go run Fetching/main.go"
 
 - masukan 4 angka untuk port-nya contoh: "8000","3000","8080"
 
