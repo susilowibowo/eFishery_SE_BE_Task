@@ -62,12 +62,21 @@ func (idb *InDB) LoginUser(c *gin.Context) {
 //function show all user
 func (idb *InDB) ShowUser(c *gin.Context) {
 	var (
-		// user   structs.User
+		user   []structs.User
 		result gin.H
 	)
 
-	result = gin.H{
-		"message": "showing all user",
+	idb.DB.Find(&user)
+	if len(user) <= 0 {
+		result = gin.H{
+			"result": nil,
+			"count":  0,
+		}
+	} else {
+		result = gin.H{
+			"result": user,
+			"count":  len(user),
+		}
 	}
 
 	c.JSON(http.StatusOK, result)

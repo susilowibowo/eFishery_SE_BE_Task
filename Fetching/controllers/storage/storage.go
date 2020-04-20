@@ -41,7 +41,6 @@ func ShowStorage(c *gin.Context) {
 
 		json.Unmarshal(data, &storages)
 
-		// log.Println(body)
 		for i, storage := range storages {
 			valusd, _ := strconv.Atoi(storage.Price)
 			storages[i].Usd = ConvertIDRtoUSD(valusd) * idr_usd.IDR_USD
@@ -57,9 +56,41 @@ func ShowStorage(c *gin.Context) {
 
 // convert int to float32
 func ConvertIDRtoUSD(theIDR int) float32 {
-
 	var y float32 = float32(theIDR)
-
 	return y
+}
 
+// function show storage resources berdasarkan area_provinsi dan tanggal weekly
+func StorageAdmin(c *gin.Context) {
+	type Storages []structs.Storage
+	var (
+		result   gin.H
+		storages Storages
+		// store    Storages
+	)
+
+	// ap := c.Param("area_provinsi")
+	response, err := http.Get("https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list")
+	if err != nil {
+		result = gin.H{
+			"message": err,
+		}
+	} else {
+		data, _ := ioutil.ReadAll(response.Body)
+
+		json.Unmarshal(data, &storages)
+
+		// for i, _ := range storages {
+
+		// 	if storages[i].Area_provinsi == ap {
+		// 		store = storages[i]
+		// 	}
+		// }
+
+		result = gin.H{
+			"data": storages,
+		}
+	}
+
+	c.JSON(http.StatusOK, result)
 }

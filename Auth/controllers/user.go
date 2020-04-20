@@ -33,7 +33,6 @@ func (idb *InDB) CreateUser(c *gin.Context) {
 	name := c.PostForm("name")
 	phone := c.PostForm("phone")
 	role := c.PostForm("role")
-	// password := c.PostForm("password")
 
 	name_check := idb.DB.Where("name = ?", name).Find(&user).RecordNotFound()
 
@@ -117,7 +116,6 @@ func (idb *InDB) LoginUser(c *gin.Context) {
 
 func (idb *InDB) InfoToken(c *gin.Context) {
 	var (
-		// user   structs.User
 		result gin.H
 	)
 
